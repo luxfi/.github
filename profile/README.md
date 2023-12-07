@@ -1,4 +1,4 @@
-Increasing economic freedom through decentralized access to quantum safe assets (QSAs), starting with gold and silver.
+Increasing economic freedom through quantum safety and decentralized access to gold, silver and other highly liquid assets.
 
 🌈 Get involved by participating in the development of the Lux Network, [provide feedback and suggestions](mailto:hi@lux.partners), or contribute to our [open source projects](https://github.com/luxdefi/).
 
