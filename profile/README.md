@@ -3,7 +3,7 @@
     ▼
   </p>
   <p align="center">
-    Increasing economic freedom through private, quantum safe access to gold, silver and other highly liquid assets.
+    <h4>Increasing economic freedom through private, quantum safe access to gold, silver and other highly liquid assets.</h4>
   </p>
 </h1>
 
