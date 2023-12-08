@@ -1,4 +1,7 @@
-<center>▼</center>
+<p align="center">
+  ▼
+</p>
+
 ### Increasing economic freedom through private, quantum safe access to gold, silver and other highly liquid assets.
 
 🌈 Get involved by participating in development, [provide feedback and suggestions](mailto:hi@lux.partners), or contribute to our [open source projects](https://github.com/luxdefi/):
