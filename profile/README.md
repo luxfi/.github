@@ -4,7 +4,7 @@
   </p>
 </h1>
 
-### Increasing economic freedom through private, quantum safe access to gold, silver and other highly liquid assets.
+#### Increasing economic freedom through private, quantum safe access to gold, silver and other highly liquid assets.
 
 🌈 Get involved by participating in development, [provide feedback and suggestions](mailto:hi@lux.partners), or contribute to our [open source projects](https://github.com/luxdefi/):
 - [Board](https://github.com/orgs/luxdefi/projects/1/views/2)
