@@ -1,5 +1,5 @@
 <p align="center">
-  ▼
+#  ▼
 </p>
 
 ### Increasing economic freedom through private, quantum safe access to gold, silver and other highly liquid assets.
