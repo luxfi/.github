@@ -9,14 +9,13 @@
 
 🌈 Get involved by participating in development, [provide feedback and suggestions](mailto:hi@lux.partners), or contribute to our [open source projects](https://github.com/luxdefi/):
 - [Board](https://github.com/orgs/luxdefi/projects/1/views/2)
+- [Discussions](https://github.com/orgs/luxdefi/discussions)
 - [Tasks](https://github.com/orgs/luxdefi/projects/1/views/1)
 - [Roadmap](https://github.com/orgs/luxdefi/projects/1/views/4)
 
 👩‍💻 Resources for the community include:
 - [Lux AI](https://lux.chat)
-- [Lux Exchange Documentation](https://docs.lux.exchange)
 - [Lux Finance Documentation](https://docs.lux.finance)
-- [Lux Market Documentation](https://docs.lux.market)
 - [Lux Network Documentation](https://docs.lux.network)
 - [Lux Goveranance](https://lux.vote)
 
