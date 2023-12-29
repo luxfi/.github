@@ -15,8 +15,7 @@
 
 👩‍💻 Resources for the community include:
 - [Lux AI](https://lux.chat)
-- [Lux Finance Documentation](https://docs.lux.finance)
-- [Lux Network Documentation](https://docs.lux.network)
+- [Lux Docs](https://docs.lux.network)
 - [Lux Goveranance](https://lux.vote)
 
 🦾 Clone Lux Ecosystem:
