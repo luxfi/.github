@@ -18,9 +18,4 @@
 - [Lux Docs](https://docs.lux.network)
 - [Lux Goveranance](https://lux.vote)
 
-🦾 Clone Lux Ecosystem:
-```bash
-curl -sL https://gist.githubusercontent.com/zeekay/fb6124d297a765cacfec106f3e997c95/raw/ffd53b7dee128f697167a00c16596277b41878b3/clone-all.sh | sh
-```
-
 🧙 Wizards, welcome.
