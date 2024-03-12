@@ -3,7 +3,7 @@
     ▼
   </p>
   <p align="center">
-    Increasing economic freedom through private, quantum safe access to highly liquid real world assets.
+    Increasing economic freedom through privacy and quantum security.
   </p>
 </h3>
 
