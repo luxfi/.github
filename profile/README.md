@@ -3,7 +3,7 @@
     ▼
   </p>
   <p align="center">
-    Increasing economic freedom through privacy and quantum security.
+ Decentralized network of blockchains designed for privacy and quantum security. 
   </p>
 </h3>
 
