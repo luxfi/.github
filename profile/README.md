@@ -1,119 +1,78 @@
-# Lux Network 🌐
+# Lux Network
 
-**Multi-consensus blockchain with post-quantum security**
+Post-quantum blockchain with multi-consensus architecture, fully homomorphic encryption (FHE), and cross-chain interoperability. High-performance decentralized infrastructure for the next generation of secure, scalable applications.
 
-Lux is a high-performance blockchain platform featuring novel consensus mechanisms, post-quantum cryptography, and seamless cross-chain interoperability.
+[![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 
-## 🏗️ Architecture
+Lux features a novel Snow consensus family (Snowball, Snowflake, Avalanche, Frosty), multi-chain architecture (X-Chain DAG, P-Chain platform, C-Chain EVM, custom subnets), and an integrated post-quantum cryptography stack including lattice-based signatures, FHE, and threshold MPC.
 
-```
-┌─────────────────────────────────────────────────────────────────┐
-│                      Lux Network                                │
-├─────────────────────────────────────────────────────────────────┤
-│  ┌─────────────┬─────────────┬─────────────┬─────────────┐      │
-│  │   X-Chain   │   P-Chain   │   C-Chain   │  Subnets    │      │
-│  │   (DAG)     │  (Platform) │    (EVM)    │  (Custom)   │      │
-│  └─────────────┴─────────────┴─────────────┴─────────────┘      │
-│                              │                                   │
-│  ┌───────────────────────────────────────────────────────┐      │
-│  │              Snow Consensus Family                     │      │
-│  │  Snowball • Snowflake • Avalanche • Frosty            │      │
-│  └───────────────────────────────────────────────────────┘      │
-│                              │                                   │
-│  ┌───────────────────────────────────────────────────────┐      │
-│  │           Post-Quantum Cryptography                    │      │
-│  │  Lattice-based signatures • FHE • Threshold MPC       │      │
-│  └───────────────────────────────────────────────────────┘      │
-└─────────────────────────────────────────────────────────────────┘
-```
+## Quick Start
 
-## 📦 Core Repositories
-
-### Blockchain Infrastructure
-| Repository | Description | Language |
-|------------|-------------|----------|
-| [node](https://github.com/luxfi/node) | Lux node implementation | Go |
-| [coreth](https://github.com/luxfi/coreth) | C-Chain EVM implementation | Go |
-| [subnet-evm](https://github.com/luxfi/subnet-evm) | Subnet EVM framework | Go |
-| [cli](https://github.com/luxfi/cli) | Command-line interface | Go |
-| [netrunner](https://github.com/luxfi/netrunner) | Network testing tool | Go |
-
-### Cryptography & Security
-| Repository | Description | Language |
-|------------|-------------|----------|
-| [fhe](https://github.com/luxfi/fhe) | Fully Homomorphic Encryption | Go |
-| [lattice](https://github.com/luxfi/lattice) | Lattice cryptography | Go |
-| [torus](https://github.com/luxfi/torus) | FHE compiler & runtime | Python/C++ |
-| [torus-ml](https://github.com/luxfi/torus-ml) | ML on encrypted data | Python |
-| [fhe-compiler](https://github.com/luxfi/fhe-compiler) | LLVM FHE compiler | C++ |
-
-### SDKs & Tools
-| Repository | Description | Language |
-|------------|-------------|----------|
-| [sdk](https://github.com/luxfi/sdk) | Multi-language SDK | Go/TS/Py |
-| [wallet](https://github.com/luxfi/wallet) | HD wallet implementation | Go/TS |
-| [bridge](https://github.com/luxfi/bridge) | Cross-chain bridge | Go |
-| [explorer](https://github.com/luxfi/explorer) | Block explorer | TypeScript |
-
-## 🔐 FHE Ecosystem
-
-Lux provides the most comprehensive FHE stack:
-
-| Component | Purpose | Repo |
-|-----------|---------|------|
-| **Core** | FHE operations | [luxfi/fhe](https://github.com/luxfi/fhe) |
-| **Lattice** | Cryptographic primitives | [luxfi/lattice](https://github.com/luxfi/lattice) |
-| **Torus** | Python/C++ compiler | [luxfi/torus](https://github.com/luxfi/torus) |
-| **Torus-ML** | Encrypted ML | [luxfi/torus-ml](https://github.com/luxfi/torus-ml) |
-| **LLVM Compiler** | Multi-language | [luxfi/fhe-compiler](https://github.com/luxfi/fhe-compiler) |
-
-**Documentation & Examples:** [github.com/luxfhe](https://github.com/luxfhe)
-
-## 🚀 Quick Start
-
-### Run a Node
 ```bash
-# Install CLI
+# Install Lux CLI
 go install github.com/luxfi/cli@latest
 
-# Create local network
+# Create a local network
 lux network start
 
-# Deploy subnet
+# Deploy a subnet
 lux subnet create mysubnet
 lux subnet deploy mysubnet
 ```
 
-### Use FHE
-```go
-import "github.com/luxfi/fhe"
+## Architecture
 
-client, _ := fhe.NewClient()
-encrypted := client.Encrypt(42)
-// Compute on encrypted data...
+```
+Chains:     X-Chain (DAG)  |  P-Chain (Platform)  |  C-Chain (EVM)  |  Subnets
+                           |
+Consensus:  Snow Family — Snowball, Snowflake, Avalanche, Frosty
+                           |
+Crypto:     Lattice signatures  |  FHE  |  Threshold MPC  |  Zero-knowledge
+                           |
+Bridge:     Teleport — Zero-knowledge MPC cross-chain bridge
 ```
 
-## 🔗 Related Organizations
+## Core Projects
 
-| Organization | Focus | Link |
-|--------------|-------|------|
-| **Lux Network** | Blockchain infrastructure | [github.com/luxfi](https://github.com/luxfi) |
-| **Lux FHE** | FHE docs & examples | [github.com/luxfhe](https://github.com/luxfhe) |
-| **Lux C++** | C++ implementations | [github.com/luxcpp](https://github.com/luxcpp) |
-| **Hanzo AI** | AI infrastructure | [github.com/hanzoai](https://github.com/hanzoai) |
-| **Zen LM** | Frontier models | [github.com/zenlm](https://github.com/zenlm) |
+### Blockchain Infrastructure
+| Project | Description |
+|---------|-------------|
+| [node](https://github.com/luxfi/node) | Lux blockchain node — multi-consensus, post-quantum ready |
+| [standard](https://github.com/luxfi/standard) | Reference implementation of Teleport protocol and quantum signatures |
+| [teleport](https://github.com/luxfi/teleport) | Zero-knowledge MPC cross-chain bridge |
+| [coreth](https://github.com/luxfi/coreth) | C-Chain EVM implementation |
+| [subnet-evm](https://github.com/luxfi/subnet-evm) | Subnet EVM framework |
 
-## 📚 Resources
+### Applications
+| Project | Description |
+|---------|-------------|
+| [market](https://github.com/luxfi/market) | Web3 marketplace for real-world assets (RWAs) |
+| [bank](https://github.com/luxfi/bank) | Open source banking-as-a-service platform |
+| [explorer](https://github.com/luxfi/explorer) | Block explorer |
+| [wallet](https://github.com/luxfi/wallet) | HD wallet implementation |
 
-- **Website:** [lux.network](https://lux.network)
-- **Docs:** [docs.lux.network](https://docs.lux.network)
-- **FHE Docs:** [fhe.lux.network](https://fhe.lux.network)
-- **Explorer:** [explorer.lux.network](https://explorer.lux.network)
+### SDKs and Tools
+| Project | Description |
+|---------|-------------|
+| [js-sdk](https://github.com/luxfi/js-sdk) | Lux JavaScript SDK |
+| [sdk](https://github.com/luxfi/sdk) | Multi-language SDK (Go, TypeScript, Python) |
+| [cli](https://github.com/luxfi/cli) | Command-line interface |
+| [netrunner](https://github.com/luxfi/netrunner) | Network testing and simulation tool |
 
-## 📄 License
+## Related Organizations
 
-Apache 2.0 - See individual repositories for details.
+| Organization | Focus |
+|--------------|-------|
+| [Hanzo AI](https://github.com/hanzoai) | AI infrastructure — LLM gateway, MCP, agents |
+| [Zen LM](https://github.com/zenlm) | Frontier language models (600M-480B params) |
+| [Zoo Labs](https://github.com/zoo-labs) | Open AI research network (501c3) |
 
----
+## Resources
 
-**Built by the Lux team in collaboration with [Hanzo AI](https://hanzo.ai)**
+- [lux.network](https://lux.network) — Website
+- [docs.lux.network](https://docs.lux.network) — Documentation
+- [explorer.lux.network](https://explorer.lux.network) — Block explorer
+
+Apache 2.0 -- See individual repositories for details.
+
+*Built by the Lux team in collaboration with [Hanzo AI](https://hanzo.ai)*
