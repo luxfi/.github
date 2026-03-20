@@ -4,7 +4,7 @@ Post-quantum blockchain with multi-consensus architecture, fully homomorphic enc
 
 [![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 
-Lux features a novel Snow consensus family (Snowball, Snowflake, Avalanche, Frosty), multi-chain architecture (X-Chain DAG, P-Chain platform, C-Chain EVM, custom subnets), and an integrated post-quantum cryptography stack including lattice-based signatures, FHE, and threshold MPC.
+Lux features a novel Quasar consensus family, multi-chain architecture (X-Chain DAG, P-Chain platform, C-Chain EVM, custom subnets), and an integrated post-quantum cryptography stack including lattice-based signatures, FHE, and threshold MPC.
 
 ## Quick Start
 
@@ -15,9 +15,9 @@ go install github.com/luxfi/cli@latest
 # Create a local network
 lux network start
 
-# Deploy a subnet
-lux subnet create mysubnet
-lux subnet deploy mysubnet
+# Deploy a chain
+lux chain create L1
+lux chain deploy L1
 ```
 
 ## Architecture
@@ -41,14 +41,15 @@ Bridge:     Teleport — Zero-knowledge MPC cross-chain bridge
 | [standard](https://github.com/luxfi/standard) | Reference implementation of Teleport protocol and quantum signatures |
 | [teleport](https://github.com/luxfi/teleport) | Zero-knowledge MPC cross-chain bridge |
 | [coreth](https://github.com/luxfi/coreth) | C-Chain EVM implementation |
-| [subnet-evm](https://github.com/luxfi/subnet-evm) | Subnet EVM framework |
+| [evm](https://github.com/luxfi/evm) | Subnet EVM framework |
 
 ### Applications
 | Project | Description |
 |---------|-------------|
-| [market](https://github.com/luxfi/market) | Web3 marketplace for real-world assets (RWAs) |
 | [bank](https://github.com/luxfi/bank) | Open source banking-as-a-service platform |
+| [exchange](https://github.com/luxfi/exchange) | AMM + DEX |
 | [explorer](https://github.com/luxfi/explorer) | Block explorer |
+| [market](https://github.com/luxfi/market) | Web3 marketplace for real-world assets (RWAs) |
 | [wallet](https://github.com/luxfi/wallet) | HD wallet implementation |
 
 ### SDKs and Tools
