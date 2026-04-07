@@ -25,11 +25,11 @@ lux chain deploy L1
 ```
 Chains:     X-Chain (DAG)  |  P-Chain (Platform)  |  C-Chain (EVM)  |  Subnets
                            |
-Consensus:  Snow Family — Snowball, Snowflake, Avalanche, Frosty
+Consensus:  Snow Family -- Snowball, Snowflake, Avalanche, Frosty
                            |
 Crypto:     Lattice signatures  |  FHE  |  Threshold MPC  |  Zero-knowledge
                            |
-Bridge:     Teleport — Zero-knowledge MPC cross-chain bridge
+Bridge:     Teleport -- Zero-knowledge MPC cross-chain bridge
 ```
 
 ## Core Projects
@@ -37,7 +37,7 @@ Bridge:     Teleport — Zero-knowledge MPC cross-chain bridge
 ### Blockchain Infrastructure
 | Project | Description |
 |---------|-------------|
-| [node](https://github.com/luxfi/node) | Lux blockchain node — multi-consensus, post-quantum ready |
+| [node](https://github.com/luxfi/node) | Lux blockchain node -- multi-consensus, post-quantum ready |
 | [standard](https://github.com/luxfi/standard) | Reference implementation of Teleport protocol and quantum signatures |
 | [teleport](https://github.com/luxfi/teleport) | Zero-knowledge MPC cross-chain bridge |
 | [coreth](https://github.com/luxfi/coreth) | C-Chain EVM implementation |
@@ -60,19 +60,30 @@ Bridge:     Teleport — Zero-knowledge MPC cross-chain bridge
 | [cli](https://github.com/luxfi/cli) | Command-line interface |
 | [netrunner](https://github.com/luxfi/netrunner) | Network testing and simulation tool |
 
-## Related Organizations
+## Ecosystem
 
-| Organization | Focus |
-|--------------|-------|
-| [Hanzo AI](https://github.com/hanzoai) | AI infrastructure — LLM gateway, MCP, agents |
-| [Zen LM](https://github.com/zenlm) | Frontier language models (600M-480B params) |
-| [Zoo Labs](https://github.com/zoo-labs) | Open AI research network (501c3) |
+| Organization | Focus | Link |
+|---|---|---|
+| **Hanzo AI** | AI infrastructure, LLM gateway, MCP tools | [github.com/hanzoai](https://github.com/hanzoai) |
+| **Lux Network** | Post-quantum blockchain, FHE, multi-consensus | [github.com/luxfi](https://github.com/luxfi) |
+| **Zen LM** | Frontier language models, 600M-480B parameters | [github.com/zenlm](https://github.com/zenlm) |
+| **Zoo Labs** | Open AI research, DeSci, 501(c)(3) foundation | [github.com/zoo-labs](https://github.com/zoo-labs) |
+| **Lux FHE** | Fully homomorphic encryption research + SDK | [github.com/luxfhe](https://github.com/luxfhe) |
+| **Lux C++** | High-performance C++ libraries | [github.com/luxcpp](https://github.com/luxcpp) |
+| **Hanzo KMS** | Enterprise secret management | [github.com/hanzokms](https://github.com/hanzokms) |
+| **Hanzo ID** | Identity, OAuth2/OIDC, WebAuthn | [github.com/hanzoid](https://github.com/hanzoid) |
+
+### Links
+- [Papers](https://github.com/luxfi/papers) -- 329+ research papers
+- [Stats](https://zeekay.github.io/stats/) -- 38,906+ commits, 59M net LOC
+- [Security](https://github.com/luxfi/node/blob/main/SECURITY.md) -- cryptographic audit trail
+- [History](https://github.com/luxfi/node/blob/main/HISTORY.md) -- 2008-2026 timeline
 
 ## Resources
 
-- [lux.network](https://lux.network) — Website
-- [docs.lux.network](https://docs.lux.network) — Documentation
-- [explorer.lux.network](https://explorer.lux.network) — Block explorer
+- [lux.network](https://lux.network) -- Website
+- [docs.lux.network](https://docs.lux.network) -- Documentation
+- [explorer.lux.network](https://explorer.lux.network) -- Block explorer
 
 Apache 2.0 -- See individual repositories for details.
 
