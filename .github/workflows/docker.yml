@@ -200,7 +200,6 @@ jobs:
           images: ${{ inputs.image }}
           tags: |
             type=semver,pattern={{version}},suffix=-amd64${{ inputs.tag-suffix }}
-            type=ref,event=branch,suffix=-amd64${{ inputs.tag-suffix }}
             type=ref,event=pr,suffix=-amd64${{ inputs.tag-suffix }}
 
       - name: Build and push
@@ -268,7 +267,6 @@ jobs:
           images: ${{ inputs.image }}
           tags: |
             type=semver,pattern={{version}},suffix=-arm64${{ inputs.tag-suffix }}
-            type=ref,event=branch,suffix=-arm64${{ inputs.tag-suffix }}
             type=ref,event=pr,suffix=-arm64${{ inputs.tag-suffix }}
 
       - name: Build and push
@@ -321,8 +319,6 @@ jobs:
         with:
           images: ${{ inputs.image }}
           tags: |
-            type=raw,value=latest,enable={{is_default_branch}}
-            type=ref,event=branch
             type=semver,pattern={{version}}
             type=semver,pattern={{major}}.{{minor}}
 
@@ -388,8 +384,6 @@ jobs:
         with:
           images: ${{ inputs.image }}
           tags: |
-            type=raw,value=latest,enable={{is_default_branch}}
-            type=ref,event=branch
             type=semver,pattern={{version}}
             type=semver,pattern={{major}}.{{minor}}
 
