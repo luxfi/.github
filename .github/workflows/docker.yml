@@ -117,16 +117,16 @@ on:
         default: ""
         type: string
       runner-amd64:
-        description: "Runner label for amd64 builds (ARC). Cross-org callers MUST override with their org's pool."
-        default: "hanzo-build-linux-amd64"
+        description: "Runner label for amd64 Linux builds — native arcd host evo. Multi-org; no override needed."
+        default: "evo"
         type: string
       runner-arm64:
-        description: "Runner label for arm64 builds (ARC). Cross-org callers MUST override with their org's pool."
-        default: "hanzo-build-linux-arm64"
+        description: "Runner label for arm64 Linux builds — native arcd host spark. Multi-org; no override needed."
+        default: "spark"
         type: string
       runner-deploy:
-        description: "Runner label for deploy jobs (ARC). Cross-org callers MUST override with their org's pool."
-        default: "hanzo-deploy-linux-amd64"
+        description: "Runner label for deploy jobs — native arcd host evo (amd64). Multi-org; no override needed."
+        default: "evo"
         type: string
 
     outputs:
