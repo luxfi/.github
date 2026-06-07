@@ -1,0 +1,19 @@
+name: Runner Smoke
+# Temporary: verifies the native arcd runners (evo/spark/dbc) pick up jobs
+# across all platforms after the auth.pat fix. Remove once confirmed green.
+on:
+  workflow_dispatch:
+
+jobs:
+  linux-amd64:
+    runs-on: [self-hosted, linux, amd64]   # evo
+    steps:
+      - run: echo "✅ linux/amd64 on $(uname -mns)"
+  linux-arm64:
+    runs-on: [self-hosted, linux, arm64]   # spark
+    steps:
+      - run: echo "✅ linux/arm64 on $(uname -mns)"
+  macos-arm64:
+    runs-on: [self-hosted, macos, arm64]   # dbc
+    steps:
+      - run: echo "✅ macos/arm64 on $(uname -mns)"
