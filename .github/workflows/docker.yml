@@ -172,13 +172,20 @@ jobs:
           driver-opts: |
             network=host
 
+      # ghcr.io wants a GitHub credential. `secrets.GITHUB_TOKEN` is minted by
+      # whichever forge ran the job, and on a lux self-hosted pool that is
+      # git.hanzo.ai -- a token ghcr.io has never seen, so the login answered
+      # `denied: denied` and every job downstream skipped. Stated once here and
+      # used by the three other login steps below; orgs/luxfi provisions exactly
+      # GHCR_USER + GHCR_TOKEN, and every caller passes `secrets: inherit`, so
+      # both reach this workflow.
       - name: Login to GHCR
         if: inputs.registry == 'ghcr.io'
         uses: docker/login-action@v3
         with:
           registry: ghcr.io
-          username: ${{ github.repository_owner }}
-          password: ${{ secrets.GITHUB_TOKEN }}
+          username: ${{ secrets.GHCR_USER }}
+          password: ${{ secrets.GHCR_TOKEN }}
 
       - name: Login to GAR
         if: inputs.registry == 'us-docker.pkg.dev'
@@ -244,8 +251,8 @@ jobs:
         uses: docker/login-action@v3
         with:
           registry: ghcr.io
-          username: ${{ github.repository_owner }}
-          password: ${{ secrets.GITHUB_TOKEN }}
+          username: ${{ secrets.GHCR_USER }}
+          password: ${{ secrets.GHCR_TOKEN }}
 
       - name: Login to GAR
         if: inputs.registry == 'us-docker.pkg.dev'
@@ -302,8 +309,8 @@ jobs:
         uses: docker/login-action@v3
         with:
           registry: ghcr.io
-          username: ${{ github.repository_owner }}
-          password: ${{ secrets.GITHUB_TOKEN }}
+          username: ${{ secrets.GHCR_USER }}
+          password: ${{ secrets.GHCR_TOKEN }}
 
       - name: Login to GAR
         if: inputs.registry == 'us-docker.pkg.dev'
@@ -367,8 +374,8 @@ jobs:
         uses: docker/login-action@v3
         with:
           registry: ghcr.io
-          username: ${{ github.repository_owner }}
-          password: ${{ secrets.GITHUB_TOKEN }}
+          username: ${{ secrets.GHCR_USER }}
+          password: ${{ secrets.GHCR_TOKEN }}
 
       - name: Login to GAR
         if: inputs.registry == 'us-docker.pkg.dev'
