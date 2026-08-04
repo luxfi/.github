@@ -1,0 +1,12 @@
+{
+  "name": "luxfi-github-dev-tools",
+  "private": true,
+  "description": "Local dev dependencies for luxfi/.github CI tooling",
+  "scripts": {
+    "brand-check": "brand-check lux all",
+    "brand-check:hanzo": "brand-check hanzo all"
+  },
+  "dependencies": {
+    "@luxfi/brand-rules": "^0.1.0"
+  }
+}
