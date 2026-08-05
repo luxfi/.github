@@ -85,17 +85,36 @@ on:
         default: "linux/amd64,linux/arm64"
         type: string
       push:
-        description: "Push images to registry"
-        default: true
-        type: boolean
+        description: >-
+          Push images to registry. Default 'true'.
+
+          STRING, NOT BOOLEAN, AND THAT IS LOAD-BEARING. git.hanzo.ai resolves
+          EVERY `type: boolean` workflow_call input to false — an explicitly
+          passed `true` included, not only an omitted one falling back to its
+          default. Measured in z/ci-boolinput-probe run 30590; the cause is one
+          line in the runner's vendored act (runner/expression.go compares an
+          `any` holding a real Go bool against the string literal "true", and
+          `any(true) == "true"` is false in Go), still present upstream. It
+          fails silently — a false push skips publishing instead of failing it,
+          so the run goes green having shipped nothing.
+
+          Compared against 'false' rather than truthiness so callers writing
+          `push: ${{ ... }}` keep working; a caller's literal YAML `true`
+          reaches a string input as "true" (measured, run 30610).
+        default: 'true'
+        type: string
       pre-build-command:
         description: "Shell command to run before docker buildx build (e.g. 'go build -o dns-server ./cmd/dns')"
         default: ""
         type: string
       deploy:
-        description: "Deploy after build (kubectl rollout restart)"
-        default: false
-        type: boolean
+        description: >-
+          Deploy after build (kubectl rollout restart). Default 'false'.
+          String for the same reason as `push` above; opted into with the exact
+          string 'true', so a runner that loses the value keeps deploy OFF
+          rather than firing it by accident.
+        default: 'false'
+        type: string
       deploy-deployment:
         description: "K8s deployment name for rollout restart"
         default: ""
@@ -223,7 +242,7 @@ jobs:
           cache-from: type=gha,scope=${{ inputs.image }}-amd64
           cache-to: type=gha,scope=${{ inputs.image }}-amd64,mode=max
           provenance: false
-          push: ${{ inputs.push }}
+          push: ${{ inputs.push != 'false' }}
 
   # ── arm64 (ARC — GKE T2A Ampere native, hanzo-build-linux-arm64) ───
   build-arm64:
@@ -290,11 +309,11 @@ jobs:
           cache-from: type=gha,scope=${{ inputs.image }}-arm64
           cache-to: type=gha,scope=${{ inputs.image }}-arm64,mode=max
           provenance: false
-          push: ${{ inputs.push }}
+          push: ${{ inputs.push != 'false' }}
 
   # ── Multi-platform manifest (both platforms) ─────────────────
   create-manifest:
-    if: inputs.push && contains(inputs.platforms, 'linux/amd64') && contains(inputs.platforms, 'linux/arm64')
+    if: inputs.push != 'false' && contains(inputs.platforms, 'linux/amd64') && contains(inputs.platforms, 'linux/arm64')
     runs-on: ${{ fromJson(inputs.runner-amd64) }}
     needs: [build-amd64, build-arm64]
     permissions:
@@ -344,6 +363,29 @@ jobs:
         env:
           DOCKER_METADATA_OUTPUT_JSON: ${{ steps.meta.outputs.json }}
 
+      # A publish that published nothing must not read as success — that is
+      # exactly how the boolean `push` gate stayed invisible. Ask the registry.
+      - name: Verify the composed manifest resolves
+        env:
+          DOCKER_METADATA_OUTPUT_JSON: ${{ steps.meta.outputs.json }}
+        run: |
+          set -euo pipefail
+          mapfile -t TAGS < <(jq -r '.tags[]' <<< "$DOCKER_METADATA_OUTPUT_JSON")
+          if [ "${#TAGS[@]}" -eq 0 ]; then
+            echo "::error::manifest job ran but metadata produced no tags"
+            exit 1
+          fi
+          fail=0
+          for img in "${TAGS[@]}"; do
+            ok=0
+            for _ in 1 2 3 4 5 6; do
+              if docker buildx imagetools inspect "$img" >/dev/null 2>&1; then ok=1; break; fi
+              sleep 5
+            done
+            if [ "$ok" = 1 ]; then echo "resolved $img"; else echo "::error::never resolved: $img"; fail=1; fi
+          done
+          exit "$fail"
+
   # ── Tag single-arch image (when only one platform is built) ──
   #
   # When only amd64 OR arm64 is requested, create-manifest is
@@ -357,7 +399,7 @@ jobs:
   tag-single-arch:
     if: >-
       always() &&
-      inputs.push &&
+      inputs.push != 'false' &&
       !(contains(inputs.platforms, 'linux/amd64') && contains(inputs.platforms, 'linux/arm64')) &&
       (needs.build-amd64.result == 'success' || needs.build-arm64.result == 'success') &&
       !(needs.build-amd64.result == 'failure' || needs.build-arm64.result == 'failure') &&
@@ -408,6 +450,29 @@ jobs:
         env:
           DOCKER_METADATA_OUTPUT_JSON: ${{ steps.meta.outputs.json }}
 
+      # A publish that published nothing must not read as success — that is
+      # exactly how the boolean `push` gate stayed invisible. Ask the registry.
+      - name: Verify the single-arch tags resolve
+        env:
+          DOCKER_METADATA_OUTPUT_JSON: ${{ steps.meta.outputs.json }}
+        run: |
+          set -euo pipefail
+          mapfile -t TAGS < <(jq -r '.tags[]' <<< "$DOCKER_METADATA_OUTPUT_JSON")
+          if [ "${#TAGS[@]}" -eq 0 ]; then
+            echo "::error::tagging job ran but metadata produced no tags"
+            exit 1
+          fi
+          fail=0
+          for img in "${TAGS[@]}"; do
+            ok=0
+            for _ in 1 2 3 4 5 6; do
+              if docker buildx imagetools inspect "$img" >/dev/null 2>&1; then ok=1; break; fi
+              sleep 5
+            done
+            if [ "$ok" = 1 ]; then echo "resolved $img"; else echo "::error::never resolved: $img"; fail=1; fi
+          done
+          exit "$fail"
+
   # ── Deploy (optional) ────────────────────────────────────────
   #
   # Depends on BOTH create-manifest and tag-single-arch.
@@ -421,7 +486,7 @@ jobs:
       always() &&
       (needs.create-manifest.result == 'success' || needs.tag-single-arch.result == 'success') &&
       !(needs.create-manifest.result == 'failure' || needs.tag-single-arch.result == 'failure') &&
-      inputs.deploy && (github.ref == 'refs/heads/main' || startsWith(github.ref, 'refs/tags/'))
+      inputs.deploy == 'true' && (github.ref == 'refs/heads/main' || startsWith(github.ref, 'refs/tags/'))
     runs-on: ${{ fromJson(inputs.runner-deploy) }}
     needs: [create-manifest, tag-single-arch]
     environment: production
