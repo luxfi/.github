@@ -2,7 +2,7 @@
 
 Post-quantum blockchain with multi-consensus architecture, fully homomorphic encryption (FHE), and cross-chain interoperability. High-performance decentralized infrastructure for the next generation of secure, scalable applications.
 
-Lux features the Quasar consensus family, multi-chain architecture (X-Chain DAG, P-Chain platform, C-Chain EVM, custom subnets), and an integrated post-quantum cryptography stack including lattice-based signatures, FHE, and threshold MPC.
+Lux features the Quasar consensus family, multi-chain architecture (X-Chain DAG, P-Chain platform, C-Chain EVM, sovereign L1s), and an integrated post-quantum cryptography stack including lattice-based signatures, FHE, and threshold MPC.
 
 ## Quick Start
 
@@ -21,9 +21,9 @@ lux chain deploy L1
 ## Architecture
 
 ```
-Chains:     X-Chain (DAG)  |  P-Chain (Platform)  |  C-Chain (EVM)  |  Subnets
+Chains:     X-Chain (DAG)  |  P-Chain (Platform)  |  C-Chain (EVM)  |  Sovereign L1s
                            |
-Consensus:  Quasar Family -- Snowball, Snowflake, Avalanche, Frosty, P3Q
+Consensus:  Quasar Family -- Photon, Wave, Focus, Nova, Nebula, Quasar, Horizon
                            |
 Crypto:     Lattice signatures  |  FHE  |  Threshold MPC  |  Zero-knowledge
                            |
@@ -90,7 +90,7 @@ Two things this table makes explicit:
 |---------|------------|---------|
 | Researcher / academic | Anything, any tier | Free under "Research Use" in the Lux Ecosystem License |
 | Hobbyist / personal | Anything in the public + patent-protected tiers | Free; Eco permits personal and non-commercial use |
-| Commercial product | Building on a Descending Chain (subnet of Lux Primary or downstream) | Free; you are an Authorized Network under Eco |
+| Commercial product | Building on a Descending Chain (a chain descending from the Lux primary network) | Free; you are an Authorized Network under Eco |
 | Commercial product | Forking BSD-3 code into a sovereign L1 unrelated to Lux | Free; BSD-3 is unrestricted |
 | Commercial product | Embedding Eco-tier code (FHE, DEX matching, MPC, threshold, ringtail, lattice, lamport, etc.) in a sovereign L1 unrelated to Lux | Commercial license required — `licensing@lux.network` |
 | Commercial product | Using the private moat (C++/CUDA/Metal/MLX/FPGA kernels) | Contract via `licensing@lux.network` |
@@ -316,7 +316,7 @@ binding artifact. This page is documentation, not a license.
 | [standard](https://github.com/luxfi/standard) | Reference implementation of Teleport protocol and quantum signatures |
 | [teleport](https://github.com/luxfi/teleport) | Zero-knowledge MPC cross-chain bridge |
 | [coreth](https://github.com/luxfi/coreth) | C-Chain EVM implementation (LGPL, vendored) |
-| [evm](https://github.com/luxfi/evm) | Subnet EVM framework (LGPL, vendored) |
+| [evm](https://github.com/luxfi/evm) | EVM framework for chains on Lux (LGPL, vendored) |
 
 ### Applications
 | Project | Description |
@@ -342,7 +342,7 @@ binding artifact. This page is documentation, not a license.
 | **Lux C++** | High-performance C++ kernel and GPU acceleration | [github.com/luxcpp](https://github.com/luxcpp) |
 | **Lux Private** | Closed-source production performance moat (private) | `github.com/lux-private` |
 | **Lux FHE** | Fully homomorphic encryption research + SDK | [github.com/luxfhe](https://github.com/luxfhe) |
-| **Hanzo AI** | AI infrastructure, LLM gateway, MCP tools | [github.com/hanzoai](https://github.com/hanzoai) |
+| **Hanzo AI** | The Open AI Cloud: Enso, agents, MCP, inference | [github.com/hanzoai](https://github.com/hanzoai) |
 | **Zen LM** | Frontier language models | [github.com/zenlm](https://github.com/zenlm) |
 | **Zoo Labs** | Open AI research, DeSci, 501(c)(3) foundation | [github.com/zoo-labs](https://github.com/zoo-labs) |
 | **Hanzo KMS** | Enterprise secret management | [github.com/hanzokms](https://github.com/hanzokms) |
